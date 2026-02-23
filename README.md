@@ -44,3 +44,5 @@ Exploratory Data Analysis.ipynb: Python notebook for initial data cleaning and t
 Vendor Performance Analysis.ipynb: Python notebook focusing on vendor-specific metrics.
 
 Vendor Performance Analysis.pbix: The interactive Power BI dashboard file.
+
+![Dashboard Screenshot]<img width="1342" height="810" alt="Screenshot 2026-02-21 211801" src="https://github.com/user-attachments/assets/17ba6577-737e-4fb7-bd47-3f52367ffa02" />
