@@ -111,7 +111,7 @@ After ingestion, row counts were verified programmatically via Python. All **15.
 
 The Pearson correlation matrix across all 15 KPI columns reveals the structural relationships within the dataset.
 
-https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/correlation_heatmap.jpg
+![Correlation Heatmap](Images/correlation_heatmap.jpg)
 
 *Figure 1: Pearson Correlation Heatmap — red = strong positive, blue = strong negative*
 
@@ -132,7 +132,7 @@ https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/c
 
 Diageo North America dominates with **$68.74M** in sales — 68% more than the second-ranked vendor. At brand level, premium spirits occupy all top positions.
 
-https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/top_vendors_brands.jpg
+![Top Vendors & Brands](Images/top_vendors_brands.jpg)
 
 *Figure 2: Top 10 Vendors (left) and Top 10 Brands (right) by Total Sales Dollars*
 
@@ -153,15 +153,15 @@ https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/t
 
 The top 10 vendors collectively represent **65.34%** of all procurement dollars — a significant concentration risk.
 
-https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/pareto_chart.jpg
 
+![Pareto Analysis](Images/pareto_chart.jpg)
 *Figure 3: Pareto Chart — Individual & Cumulative Vendor Purchase Contribution (%)*
 
 ### 6.3 Procurement Dependency
 
 The donut chart confirms that 65.34% of all purchase dollars flow to just 10 vendors, with Diageo North America alone accounting for **15.8%**.
 
-https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/donut_chart.jpg
+![Donut Chart](Images/donut_chart.jpg)
 
 *Figure 4: Top 10 Vendors hold 65.34% of total purchase spend*
 
@@ -226,7 +226,7 @@ The p-value of **< 0.0001** conclusively rejects the null hypothesis. The 162-pe
 
 ## 8. Power BI Dashboard
 
-https://github.com/Rishabh-Jain-9/Vendor-Performance-Analysis/blob/main/Images/dashboard.jpg
+![Dashboard](Images/dashboard.jpg)
 
 *Figure 5: Vendor Performance Analysis Power BI Dashboard*
 
