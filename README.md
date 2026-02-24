@@ -39,13 +39,26 @@
 
 ---
 
-## 1. Executive Summary
 
-This project delivers a complete end-to-end data analytics pipeline built on an inventory management system for a retail liquor business. Six large CSV source files — spanning over **15.6 million rows** — were imported into a MySQL relational database, explored and transformed in Python (Jupyter Notebooks), and visualised in an interactive Power BI dashboard.
+## 1. Project Overview & Business Impact
+
+This project analyzes a **1.5 GB dataset** containing over **15.6 million rows** of liquor sales and inventory to optimize supply chain efficiency and capital management. By engineering a complete end-to-end pipeline across MySQL, Python, and Power BI, I identified critical bottlenecks where $2.71M in capital is currently trapped in stagnant inventory and underperforming vendors.
 
 The central analytical output is the **`vendor_sales_summary`** table: a consolidated 10,692-row dataset of per-vendor, per-brand KPIs covering purchases, sales, freight, pricing, gross profit, profit margin, and stock turnover.
 
-Key findings include **$2.71M locked in unsold inventory**, **65.34% vendor procurement concentration** in just 10 suppliers, a statistically proven profitability gap between top and low-performing vendors (**p < 0.0001**), and a **74% unit cost reduction** available through bulk order consolidation.
+
+### 💡 Key Business Insights
+
+* **Unsold Capital:** Identified **$2.71M** in capital currently trapped in stagnant inventory.
+* **Vendor Turnover:** Isolated 5 high-risk vendors (including Altamar Brands and Caledonia Spirits) with turnover rates as low as **0.035**, indicating significant overstocking.
+* **Profit Leaders:** Verified that while Diageo North America leads in total sales volume ($68M), smaller **"Hidden Gem"** brands offer higher profit margins but require better marketing visibility.
+* **Target Brands:** Developed logic to flag brands with high profit margins (>85th percentile) but low sales volume (<15th percentile) as primary growth opportunities.
+
+### 🛠️ Technical Workflow Highlights
+
+1.  **Data Engineering (MySQL):** Managed user privileges (`GRANT`) and utilized `LOAD DATA INFILE` for high-performance ingestion of 15.6M rows.
+2.  **Exploratory Data Analysis (Python):** Connected via `SQLAlchemy` to calculate stock turnover and perform statistical hypothesis testing.
+3.  **Business Intelligence (Power BI):** Developed a comprehensive dashboard using custom DAX measures (using `PERCENTILEX.INC`) to automate brand identification.
 
 ## 🏗 Project Architecture & Data Pipeline
 A visual representation of the end-to-end flow from raw data ingestion to executive business intelligence.
@@ -259,7 +272,7 @@ The p-value of **< 0.0001** conclusively rejects the null hypothesis. The 162-pe
 
 *Figure 5: Vendor Performance Analysis Power BI Dashboard*
 
-"Note: The .pbix file is available in the repository for local download and inspection of the DAX measures."
+**"Note: The .pbix file is available in the repository for local download and inspection of the DAX measures."**
 
 | Visual | Title | Fields Used | Insight Delivered |
 |---|---|---|---|
