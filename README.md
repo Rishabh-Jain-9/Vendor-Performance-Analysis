@@ -268,11 +268,12 @@ The p-value of **< 0.0001** conclusively rejects the null hypothesis. The 162-pe
 
 ## 8. Power BI Dashboard
 
+**"Note: The .pbix file is available in the repository for local download and inspection of the DAX measures."**
+
 ![Dashboard](Images/dashboard.jpg)
 
 *Figure 5: Vendor Performance Analysis Power BI Dashboard*
 
-**"Note: The .pbix file is available in the repository for local download and inspection of the DAX measures."**
 
 | Visual | Title | Fields Used | Insight Delivered |
 |---|---|---|---|
