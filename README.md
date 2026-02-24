@@ -39,6 +39,14 @@
 
 ---
 
+## 📂 Full Project Report Documentation
+For a deep dive into the technical methodology, expanded statistical visualizations, and the full 11-page business analysis, please refer to the PDF report:
+
+👉 **[View Full Project Report (PDF)](./Project_Report.pdf)**
+
+> 💡 **Note:** **If GitHub's preview only shows the first few pages, please click the **"Download"** button at the top right to view the full 13-page analysis in high resolution.**
+
+---
 
 ## 1. Project Overview & Business Impact
 
@@ -323,3 +331,5 @@ The analysis surfaces concrete, data-backed actions with measurable impact: $2.7
 ---
 
 *Built with MySQL · Python · Power BI*
+
+---
