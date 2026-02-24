@@ -47,6 +47,32 @@ The central analytical output is the **`vendor_sales_summary`** table: a consoli
 
 Key findings include **$2.71M locked in unsold inventory**, **65.34% vendor procurement concentration** in just 10 suppliers, a statistically proven profitability gap between top and low-performing vendors (**p < 0.0001**), and a **74% unit cost reduction** available through bulk order consolidation.
 
+## 🏗 Project Architecture & Data Pipeline
+A visual representation of the end-to-end flow from raw data ingestion to executive business intelligence.
+
+```mermaid
+
+graph TD
+    subgraph "Data Ingestion"
+    A[(6 CSV Files<br/>1.5 GB)] -->|LOAD DATA INFILE| B[(MySQL Database)]
+    end
+
+    subgraph "Python ETL Engine"
+    B -->|SQLAlchemy Extract| C[Jupyter Notebook / Pandas]
+    C -->|Transform & Aggregate| D{vendor_sales_summary}
+    D -->|to_sql Load| B
+    end
+
+    subgraph "Analysis & BI"
+    C -->|SciPy Stats| E[Statistical Findings<br/>p < 0.0001]
+    B -->|Direct Query| F[Power BI Dashboard]
+    end
+
+    E --> G((Business Impact:<br/>Recover $2.71M))
+    F --> G
+
+```
+
 ---
 
 ## 2. Project Objectives
@@ -74,19 +100,22 @@ Six CSV files were loaded into the **`inventory`** MySQL database using `LOAD DA
 | `sales` | 12,825,363 | VendorNo, Brand, SalesQuantity, SalesDollars, SalesPrice | Revenue & volume data (1.5 GB source file) |
 | `vendor_invoice` | 5,543 | VendorNumber, Quantity, Dollars, Freight | Aggregated invoicing; freight cost source |
 
-The analytical output table **`vendor_sales_summary`** (10,692 rows) was created via a CTE SQL query joining all six tables and computing derived KPIs: `GrossProfit`, `ProfitMargin`, `StockTurnover`, `FreightCost`, and `SalesToPurchaseRate`.
+**The analytical output table **`vendor_sales_summary`** (10,692 rows) was engineered in Python using pandas to merge multi-table SQL data and compute derived KPIs: `GrossProfit`, `ProfitMargin`, `StockTurnover`, `FreightCost`, and `SalesToPurchaseRate`. This processed table was then written back to MySQL via to_sql for centralized reporting**
 
 ---
 
 ## 4. Workflow & Methodology
 
+
 | Step | Phase | Tool | Action & Output |
-|---|---|---|---|
-| 1 | Ingest | MySQL | `LOAD DATA INFILE` for 6 CSVs; date columns normalised via `STR_TO_DATE` + `ALTER TABLE`. |
-| 2 | Explore | Python / Jupyter | Row count verification across all tables; column inspection; vendor drill-downs (e.g. Vendor 4466). |
-| 3 | Transform | SQL + Python | CTE query merges purchases, sales, freight, and pricing into `vendor_sales_summary`; null-fill and name-strip cleaning applied. |
-| 4 | Analyse | Python / SciPy | Distribution plots, box plots, correlation heatmap, brand segmentation, vendor ranking, Pareto, bulk pricing, turnover, unsold capital, t-test. |
-| 5 | Visualise | Power BI | `vendor_sales_summary.csv` imported; dashboard with 5 KPI cards, donut, 2 bar charts, funnel, and table. |
+|:---:|---|---|---|
+| 1 | **Ingest** | MySQL | Performed high-speed ingestion of 15.6M rows using `LOAD DATA INFILE`; normalized date schema via `STR_TO_DATE`. |
+| 2 | **Connect** | SQLAlchemy | Established a live Python-to-MySQL bridge to extract raw dataframes into Jupyter Notebook. |
+| 3 | Explore | Python / Jupyter | Row count verification across all tables; column inspection; vendor drill-downs (e.g. Vendor 4466). |
+| 4 | **Transform**| Python (pandas)| Engineered the `vendor_sales_summary` table by merging 6 datasets; performed data cleaning and KPI calculation. |
+| 5 | **Load** | MySQL (`to_sql`) | Pushed the engineered summary table back into the MySQL database for centralized storage and persistence. |
+| 6 | **Analyse** | Python (SciPy) | Conducted Exploratory Data Analysis (EDA), Distribution plots, box plots, correlation heatmap, brand segmentation, vendor ranking, Pareto, bulk pricing, turnover, unsold capital, and Statistical T-Testing ($p < 0.0001$). |
+| 7 | **Visualise**| Power BI | `vendor_sales_summary.csv` imported; Developed an interactive executive dashboard by connecting directly to the processed MySQL summary table. |
 
 ---
 
@@ -229,6 +258,8 @@ The p-value of **< 0.0001** conclusively rejects the null hypothesis. The 162-pe
 ![Dashboard](Images/dashboard.jpg)
 
 *Figure 5: Vendor Performance Analysis Power BI Dashboard*
+
+"Note: The .pbix file is available in the repository for local download and inspection of the DAX measures."
 
 | Visual | Title | Fields Used | Insight Delivered |
 |---|---|---|---|
