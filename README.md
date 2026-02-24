@@ -40,9 +40,11 @@
 ---
 
 ## 📂 Full Project Report Documentation
-For a deep dive into the technical methodology, expanded statistical visualizations, and the full 11-page business analysis, please refer to the PDF report:
 
-👉 **[View Full Project Report (PDF)](./Project_Report.pdf)**
+I have provided two levels of documentation for this project:
+
+1.  👉 **[Executive Project Report (PDF)](./Project_Report.pdf):** Best for stakeholders. Focuses on the $2.71M capital recovery, vendor performance, and business      recommendations.
+2.  👉 **[Technical Code Walkthrough (PDF)](./Technical_Code_Walkthrough_Report.pdf):** Best for Lead Data Analysts. A deep dive into the MySQL ingestion scripts, Python ETL logic, and statistical hypothesis testing ($p < 0.0001$).
 
 > 💡 **Note:** **If GitHub's preview only shows the first few pages, please click the **"Download"** button at the top right to view the full 13-page analysis in high resolution.**
 
